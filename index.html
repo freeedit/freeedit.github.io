@@ -228,6 +228,14 @@
         <p class="content has-text-justified">
           Pipeline for dataset construction and examples of training samples. (a) <b>Image triplet construction</b>. We repaint the source image in the existing real-world segmentation dataset twice to form the image triplet. (b) <b>Instruction Construction</b>. We use multiple powerful MLLMs to caption the generated image, and combine the resulting local descriptions with instruction templates to form edit instructions. (c) Examples of the training dataset. The item in the dataset contains images before and after editing and a multi-modal instruction.
         </p>
+
+        <div class="content has-text-justified">
+          <img src="static2/class4.png" />
+        </div>
+        <p class="content has-text-justified">
+          Statistics for the FreeBench dataset. The first four parent classes in FreeBench are animals, food, kitchenware, and vehicles. FreeBench covers the vast majority of categories in daily life, allowing us to train a generalizable zero-shot reference-based image editing model.
+        </p>
+
       </div>
     </div>
   </div>
@@ -241,17 +249,14 @@
       <div class="column">
         <h2 class="title is-3">Reference-based Image Editing</h2>
         <p class="content has-text-justified">
-          <!-- The existing perceptual model can serve as an excellent visual generation quality feedback provider for the diffusion model.  -->
-          <!-- Take the instance segmentation model as an example, it accurately captures the defect of the generation(e.g. the distort arm of the boy) -->
         </p>
         <div class="content has-text-justified">
           <img src="static2/comp.png" />
         </div>
         <p class="content has-text-justified">
           <b>Qualitative comparisons</b> of FreeEdit with previous methods, including mask-based methods PaintByExample, AnyDoor, MimicBrush, and mask-free methods InstructPix2Pix, Kosmos-G. <b>Mask-based methods</b> require the user to manually provide the mask of the editing area. AnyDoor also needs to provide a foreground mask of the reference image, and the editing mask fed to AnyDoor will be processed as a box because its training is box-based. <b>Mask-free methods</b> are language-based and don't require additional mask input, where we take InstructPix2Pix with detailed instructions as a baseline for comparison. The inputs required for each method are marked below each line of images. S* denotes the specific visual concept in the reference image, and O* denotes the original image to be edited.
-          <!-- The existing perceptual model can serve as an excellent visual generation quality feedback provider for the diffusion model.  -->
-          <!-- Take the instance segmentation model as an example, it accurately captures the defect of the generation(e.g. the distort arm of the boy) -->
         </p>
+
       </div>
     </div>
   </div>
@@ -263,6 +268,9 @@
     <div class="columns is-centered has-text-centered">
       <div class="column">
         <h2 class="title is-3">Object Removal</h2>
+        <p class="content has-text-justified">
+          Previous reference-based inpainting methods use image features as a control condition for cross-attention, which makes the trained model no longer able to support other tasks. Instead, FreeEdit could support reference-free object removal task by simply setting the reference scale λ in DRRA to 0 due to flexible reference attention and multi-modal language instructions.
+        </p>
         <div class="content has-text-justified">
           <img src="static2/rm.png" />
         </div>
@@ -279,6 +287,9 @@
     <div class="columns is-centered has-text-centered">
       <div class="column">
         <h2 class="title is-3">Plain-text instruction-driven Editing</h2>
+        <p class="content has-text-justified">
+          As with object removal task, FreeEdit also supports a broader range of plain-text instruction-driven editing which is not limited to a specific type of editing, as our multi-modal instructions are closely related to text instructions.
+        </p>
         <div class="content has-text-justified">
           <img src="static2/text.png" />
         </div>

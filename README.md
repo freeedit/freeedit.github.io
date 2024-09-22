@@ -1,1 +1,1 @@
-The webpage of our paper: ***UniFL: Improve Stable Diffusion via Unified Feedback Learning***.
+The webpage of our paper: ***FreeEdit: Mask-free Reference-based Image Editing with Multi-modal Instruction***.
