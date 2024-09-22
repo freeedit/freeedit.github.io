@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FreeEdit: Mask-free Reference-based Image Editing with Multi-modal Instruction</title>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+</head>
+
+<style>
+  .section.hero {
+    margin-bottom: 0px; /* 移除或减小底部外边距 */
+  }
+
+  .hero {
+    margin-bottom: -80px; /* 移除或减小底部外边距 */
+  }
+
+  .hero2 {
+    margin-bottom: -200px; /* 移除或减小底部外边距 */
+    margin-top: 100px; /* 移除或减小底部外边距 */
+  }
+  
+  .content1 {
+      text-align: left;
+      margin-bottom: 80px; /* 移除或减小底部外边距 */
+  }
+
+  .marquee-wrapper {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-block {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.marquee-inner {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 60s linear infinite; /* 调整时间以匹配内容长度 */
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); } /* 这里的百分比应该根据内容宽度调整 */
+}
+
+.marquee-item {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 10px; /* 根据需要调整间距 */
+  padding: 0; /* 确保没有内边距 */
+}
+
+/* 移除两个 span 之间的间隔 */
+.marquee-inner > span {
+  margin: 0;
+  padding: 0;
+}
+</style>
+
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+      </div>
+      <div class="container has-text-centered">
+        <h1 class="title is-1 publication-title">
+          FreeEdit: 
+        </h1>
+        <h3 class="title is-3 publication-title">
+          Mask-free Reference-based Image Editing with Multi-modal Instruction
+        </h3>
+        <div class="is-size-5 publication-authors">
+          <div class="author-block"><a href="https://scholar.google.cz/citations?user=xFkLeUAAAAAJ&hl=zh-CN&oi=ao">Runze He</a><sup>1</sup>, </div>
+          <div class="author-block"><a href="">Kai Ma</a><sup>2</sup>, </div>
+          <div class="author-block"><a href="https://scholar.google.cz/citations?user=j5rBSw0AAAAJ&hl=zh-CN&oi=ao">Linjiang Huang</a><sup>3</sup>, </div>
+          <div class="author-block"><a href="https://scholar.google.cz/citations?user=hVbSuo0AAAAJ&hl=zh-CN&oi=ao">Shaofei Huang</a><sup>1</sup>, </div>
+
+          <div class="author-block"><a href="https://scholar.google.cz/citations?hl=zh-CN&user=sj4FqEgAAAAJ">Jialin Gao</a><sup>2</sup>, </div>
+
+          <div class="author-block"><a href="https://scholar.google.cz/citations?hl=zh-CN&user=JXV5yrZxj5MC">Xiaoming Wei</a><sup>2</sup>, </div>
+          <div class="author-block"><a href="">Jiao Dai</a><sup>1</sup>, </div><br>
+          <div class="author-block"><a href="https://scholar.google.cz/citations?user=0b_BPiMAAAAJ&hl=zh-CN&oi=ao">Jizhong Han</a><sup>1</sup>, </div>
+
+          <div class="author-block"><a href="https://scholar.google.cz/citations?user=-QtVtNEAAAAJ&hl=zh-CN&oi=ao">Si Liu</a><sup>3</sup> </div>
+          <!-- <div class="author-block">FU Lean, </div> -->
+
+          <!-- <div class="author-block"><a href="http://guanbinli.com/">Li Guanbin</a> </div> -->
+                  
+        </div>
+
+        <!-- She received her Ph.D. degree from Institute of Computing Technology, Chinese Academy of Sciences. Her research interests include multimedia information processing and big data storage. She has published over 60 papers and held over 10 domestic patents. -->
+
+        <div class="is-size-5 publication-authors">
+          <span class="author-block"><sup>1</sup>Institute of Information Engineering, Chinese Academy of Sciences,</span><br>
+          <span class="author-block"><sup>2</sup>Meituan, <sup>3</sup>Beihang University</span><br>
+          <!-- <span class="author-block">Meituan,</span><br> -->
+          <!-- <span class="author-block">&nbsp&nbsp<sup>*</sup>Equal Contribution &nbsp&nbsp<sup>†</sup>Project Lead</span> -->
+        </div>
+
+        <div class="column has-text-centered">
+          <div class="publication-links">
+            <!-- PDF Link. -->
+            <span class="link-block">
+                <a href="http://arxiv.org/abs/2404.05595"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+            </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero2">
+  <div class="is-max-desktop">
+    <h2 class="title is-2, columns is-centered">Image Editing Examples</h2>
+    <div class="marquee-wrapper">
+        <div class="marquee-block">
+          <div class="marquee-inner to-left">
+            <span>
+              <div class="marquee-item"><img class="image" src="static2/refer1.png"></div>
+              <div class="marquee-item"><img class="image" src="static2/add1.png"></div>
+              <div class="marquee-item"><img class="image" src="static2/rm1.png"></div>
+              <div class="marquee-item"><img class="image" src="static2/t2.png"></div>
+              <div class="marquee-item"><img class="image" src="static2/refer2.png"></div>
+              <div class="marquee-item"><img class="image" src="static2/rm2.png"></div>
+              <div class="marquee-item"><img class="image" src="static2/add2.png"></div>
+              <div class="marquee-item"><img class="image" src="static2/t1.png"></div>
+            </span>
+            <span>
+              <!-- <div class="marquee-item"><img class="image" src="static2/add4.png"></div> -->
+              <!-- <div class="marquee-item"><img class="image" src="static2/rm3.png"></div> -->
+              <div class="marquee-item"><img class="image" src="static2/refer4.png"></div>
+              <div class="marquee-item"><img class="image" src="static2/refer3.png"></div>
+              <div class="marquee-item"><img class="image" src="static2/add3.png"></div>
+              <div class="marquee-item"><img class="image" src="static2/rm4.png"></div>
+              <div class="marquee-item"><img class="image" src="static2/rep1.png"></div>
+              <div class="marquee-item"><img class="image" src="static2/rep2.png"></div>
+              <div class="marquee-item"><img class="image" src="static2/rep3.png"></div>
+              <div class="marquee-item"><img class="image" src="static2/rep4.png"></div>
+            </span>
+        </div>
+    </div>
+  </section>
+
+<!-- <section class="section hero"></section>
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Image Editing Examples</h2>
+        <div class="content has-text-justified">
+          <img src="static2/more_vis.png" />
+        </div>
+        <p class="content has-text-justified">
+          The existing perceptual model can serve as an excellent visual generation quality feedback provider for the diffusion model. 
+          Take the instance segmentation model as an example, it accurately captures the defect of the generation(e.g. the distort arm of the boy)
+        </p>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Introducing user-specified visual concepts in image editing is highly practical as these concepts convey the user's intent more precisely than text-based descriptions. We propose <b><i>FreeEdit</i></b>, a novel approach for achieving such <i>reference-based image editing</i>, which can accurately reproduce the visual concept from the reference image based on user-friendly language instructions. Our approach leverages the <b>multi-modal instruction encoder</b> to encode language instructions to guide the editing process. This implicit way of locating the editing area eliminates the need for manual editing masks. To enhance the reconstruction of reference details, we introduce the <b>Decoupled Residual ReferAttention (DRRA)</b> module. This module is designed to integrate fine-grained reference features extracted by a detail extractor into the image editing process in a residual way without interfering with the original self-attention. Given that existing datasets are unsuitable for reference-based image editing tasks, particularly due to the difficulty in constructing image triplets that include a reference image, we curate a high-quality dataset, <b><i>FreeBench</i></b>, using a newly developed twice-repainting scheme. FreeBench comprises the images before and after editing, detailed editing instructions, as well as a reference image that maintains the identity of the edited object, encompassing tasks such as object addition, replacement, and deletion. By conducting phased training on FreeBench followed by quality tuning, FreeEdit achieves high-quality zero-shot editing through convenient language instructions. We conduct extensive experiments to evaluate the effectiveness of FreeEdit across multiple task types, demonstrating its superiority over existing methods.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-six-fifths">
+        <h2 class="title is-2, columns is-centered">Pipeline</h2>
+      <br>
+      <h2 class="subtitle has-text-justified">
+        <figure style="width: 100%;">
+          <!-- <a href="assets/figures/overview.png"> -->
+          <img width="100%" src="static2/pipeline.png" />
+          <!-- </a> -->
+        </figure>
+      </h2>
+    </div>
+  </div>
+  <p class="content has-text-justified">
+    <b>Pipeline</b>: FreeEdit consists of three components: (a) Multi-modal instruction encoder. (b) Detail extractor. (c) Denosing U-Net. Text instruction and reference image are firstly fed into the <b>multi-modal instruction encoder</b> to generate multi-modal instruction embedding. The reference image is additionally fed into the <b>detail extractor</b> to obtain fine-grained features. The original image latent is concatenated with the noise latent to introduce the original image condition. 
+    <b>Denosing U-Net</b> accepts the 8-channel input and interacts with the multi-modal instruction embedding through cross-attention. The <b>DRRA</b> modules which connect the detail extractor and the denoising U-Net, are used to integrate fine-grained features from the detail extractor to promote ID consistency with the reference image. (d) The editing examples obtained using FreeEdit.
+   </p>
+</div>
+</section>
+
+<section class="section hero"></section>
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Dataset</h2>
+        <p class="content has-text-justified">
+          To address the lack of datasets, we developed <b><i>FreeBench</i></b>, a highquality dataset designed to support reference-based instruction-driven editing. Previous studies always struggled with constructing image triplets that include the original, edited, and reference images, because it is difficult to maintain the ID consistency of the reference images and the edited images.
+          To resolve this, we implement a <b>twice-repainting construction scheme</b> to ensure identity consistency between the edited object and the reference, based on the real-world segmentation dataset.
+        </p>
+        <div class="content has-text-justified">
+          <img src="static2/data.png" />
+        </div>
+        <p class="content has-text-justified">
+          Pipeline for dataset construction and examples of training samples. (a) <b>Image triplet construction</b>. We repaint the source image in the existing real-world segmentation dataset twice to form the image triplet. (b) <b>Instruction Construction</b>. We use multiple powerful MLLMs to caption the generated image, and combine the resulting local descriptions with instruction templates to form edit instructions. (c) Examples of the training dataset. The item in the dataset contains images before and after editing and a multi-modal instruction.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section hero"></section>
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Reference-based Image Editing</h2>
+        <p class="content has-text-justified">
+          <!-- The existing perceptual model can serve as an excellent visual generation quality feedback provider for the diffusion model.  -->
+          <!-- Take the instance segmentation model as an example, it accurately captures the defect of the generation(e.g. the distort arm of the boy) -->
+        </p>
+        <div class="content has-text-justified">
+          <img src="static2/comp.png" />
+        </div>
+        <p class="content has-text-justified">
+          <b>Qualitative comparisons</b> of FreeEdit with previous methods, including mask-based methods PaintByExample, AnyDoor, MimicBrush, and mask-free methods InstructPix2Pix, Kosmos-G. <b>Mask-based methods</b> require the user to manually provide the mask of the editing area. AnyDoor also needs to provide a foreground mask of the reference image, and the editing mask fed to AnyDoor will be processed as a box because its training is box-based. <b>Mask-free methods</b> are language-based and don't require additional mask input, where we take InstructPix2Pix with detailed instructions as a baseline for comparison. The inputs required for each method are marked below each line of images. S* denotes the specific visual concept in the reference image, and O* denotes the original image to be edited.
+          <!-- The existing perceptual model can serve as an excellent visual generation quality feedback provider for the diffusion model.  -->
+          <!-- Take the instance segmentation model as an example, it accurately captures the defect of the generation(e.g. the distort arm of the boy) -->
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section hero"></section>
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Object Removal</h2>
+        <div class="content has-text-justified">
+          <img src="static2/rm.png" />
+        </div>
+        <p class="content has-text-justified">
+          A qualitative comparison of FreeEdit with SD-Inpainting and InstructPix2Pix on the object removal task. SD-Inpainting requires the edit area mask of the object to be deleted, while our FreeEdit and InstructPix2Pix perform object removal without the need for masks in the form of language instructions. The input mask for SD-Inpainting is highlighted in green in the 2nd column.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero"></section>
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Plain-text instruction-driven Editing</h2>
+        <div class="content has-text-justified">
+          <img src="static2/text.png" />
+        </div>
+        <p class="content has-text-justified">
+          The Visual comparison of FreeEdit with InstructPix2Pix and MagicBrush on plain-text instruction-driven editing task. The corresponding text instruction used for each edit case is marked below the corresponding images.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Mask-free Virtual Try-on</h2>
+        <div class="content has-text-justified">
+          <img src="static2/tryon.png" />
+        </div>
+        <p class="content has-text-justified">
+          As a versatile reference-based image editing model, FreeEdit can be extended to virtual try-on task. Different from the previous methods, FreeEdit simplifies the inference pipeline of virtual try-on. Users could execute the task according to a concise multi-modal language instruction such as "replace her top with S*" that conforms to human habits and does not need to provide a manual mask.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="section hero"></section>
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Comparsions</h2>
+        <div class="content has-text-justified">
+          <img src="static2/text.png" />
+        </div>
+        <div class="content has-text-justified">
+          <img src="static2/tryon.png" />
+        </div>
+        <p class="content has-text-justified">
+          UniFL exhibits a remarkable advantage over existing methods that concentrate on quality optimization and inference acceleration in terms of both quantitative comparison and user study.
+        </p>
+       
+      </div>
+      
+    </div>
+  </div>
+</section> -->
+
+
+<!-- <section class="section hero">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Comparsions</h2>
+        <div class="content has-text-justified">
+          <img src="static/images/visualization.jpg" />
+        </div>
+        <div class="content has-text-justified">
+          <img src="static/images/gsb.jpg" />
+        </div>
+        <p class="content has-text-justified">
+          UniFL exhibits a remarkable advantage over existing methods that concentrate on quality optimization and inference acceleration in terms of both quantitative comparison and user study.
+        </p>
+       
+      </div>
+      
+    </div>
+  </div>
+</section> -->
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container content is-max-desktop">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@misc{zhang2024unifl,
+      title={UniFL: Improve Stable Diffusion via Unified Feedback Learning}, 
+      author={Jiacheng Zhang and Jie Wu and Yuxi Ren and Xin Xia and Huafeng Kuang and Pan Xie and Jiashi Li and Xuefeng Xiao and Weilin Huang and Min Zheng and Lean Fu and Guanbin Li},
+      year={2024},
+      eprint={2404.05595},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}</code></pre>
+  </div>
+</section> -->
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://arxiv.org/pdf/2401.04468.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-6">
+        <div class="content">
+          <p>
+             The source code of this webpage is based on the <a href="https://github.com/nerfies/nerfies.github.io/"> Nerfies</a> project webpage.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript" src="./static/slick/slick.min.js"></script>
+</body>
+</html>
